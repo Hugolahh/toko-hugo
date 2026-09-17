@@ -5,3 +5,6 @@ use App\Http\Controllers\LowonganController;
 
 Route::resource('lowongan', LowonganController::class);
 Route::resource('welcome', LowonganController::class);
+Route::get('/', function () {
+    return view('welcome');
+});
