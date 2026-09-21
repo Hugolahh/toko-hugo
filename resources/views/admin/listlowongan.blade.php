@@ -7,7 +7,7 @@
 </head>
 <body>
     <a href="{{ route('lowongan.create') }}">Add lowongan</a>
-    
+
     <table>
         <thead>
             <tr>
@@ -18,6 +18,7 @@
                 <th>Lokasi</th>
                 <th>Gaji</th>
                 <th>Status</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,12 @@
                 <td>{{ $lowongan->lokasi }}</td>
                 <td>{{ $lowongan->gaji }}</td>
                 <td>{{ $lowongan->status }}</td>
+                <td>
+                    <form action="{{ route('lowongan.destroy', $lowongan->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this lowongan?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="action-link" style="color:#d02455">Hapus</button>
+                    </form>
             </tr>
             @endforeach
         </tbody>
