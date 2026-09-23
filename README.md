@@ -1,27 +1,6 @@
 # Toko Hugo
 
-Project ini adalah aplikasi web sederhana berbasis Laravel yang dibuat untuk kebutuhan tugas sekolah. Aplikasi ini dibuat untuk mengelola data utama pada sebuah toko/usaha dengan tampilan yang mudah dipahami.
-
-## Deskripsi Project
-
-Aplikasi ini berfungsi untuk mengelola beberapa informasi penting, seperti:
-
-- Data produk
-- Data karyawan
-- Data layanan
-- Data lowongan pekerjaan
-- Informasi umum toko
-
-Dengan aplikasi ini, proses pencatatan data menjadi lebih rapi, mudah diakses, dan lebih terstruktur.
-
-## Fitur
-
-- Manajemen data produk
-- Manajemen data karyawan
-- Manajemen data layanan
-- Manajemen data lowongan
-- Tampilan yang sederhana dan mudah digunakan
-- Didesain dengan Laravel dan Tailwind CSS
+Aplikasi web yang dikembangkan menggunakan Laravel untuk mendukung kebutuhan pengelolaan data pada sebuah toko atau usaha kecil. Project ini dibuat sebagai tugas sekolah dengan fokus pada pemanfaatan teknologi informasi untuk mengelola data secara lebih terstruktur dan efisien.
 
 ## Teknologi yang Digunakan
 
@@ -30,6 +9,17 @@ Dengan aplikasi ini, proses pencatatan data menjadi lebih rapi, mudah diakses, d
 - MySQL
 - Tailwind CSS
 - Vite
+- Composer
+
+## Persyaratan Sistem
+
+Sebelum menjalankan aplikasi, pastikan perangkat Anda sudah memiliki:
+
+- PHP 8.x
+- Composer
+- MySQL atau database yang kompatibel
+- Node.js dan npm
+- Web browser
 
 ## Cara Install
 
@@ -52,19 +42,19 @@ Dengan aplikasi ini, proses pencatatan data menjadi lebih rapi, mudah diakses, d
     npm install
     ```
 
-4. Buat file environment
+4. Salin file environment
 
     ```bash
     cp .env.example .env
     ```
 
-5. Generate key aplikasi
+5. Generate application key
 
     ```bash
     php artisan key:generate
     ```
 
-6. Atur konfigurasi database di file `.env`
+6. Konfigurasikan database pada file `.env`
 
 7. Jalankan migrasi database
 
@@ -78,9 +68,15 @@ Dengan aplikasi ini, proses pencatatan data menjadi lebih rapi, mudah diakses, d
     php artisan serve
     ```
 
+9. Jalankan frontend development server
+
+    ```bash
+    npm run dev
+    ```
+
 ## Cara Menjalankan
 
-Buka browser dan akses link berikut:
+Setelah server berjalan, buka browser dan akses:
 
 ```bash
 http://localhost:8000
@@ -92,12 +88,8 @@ http://localhost:8000
 - `database/` : migration dan seeder
 - `resources/` : file tampilan dan frontend
 - `routes/` : routing aplikasi
-- `public/` : file publik
+- `public/` : file publik yang diakses langsung oleh browser
 
-## Penutup
+## Status Proyek
 
-Project ini dibuat dengan tujuan pembelajaran dan masih bisa dikembangkan lebih lanjut sesuai kebutuhan. Semoga README ini cukup sederhana dan mudah dipahami.
-
-## Lisensi
-
-Project ini dibuat untuk keperluan pembelajaran dan dapat dikembangkan lebih lanjut sesuai kebutuhan.
+Proyek ini masih dalam tahap pembelajaran dan pengembangan lebih lanjut sesuai kebutuhan. Diharapkan dapat menjadi contoh aplikasi sederhana yang bermanfaat untuk tugas sekolah maupun portofolio proyek.
