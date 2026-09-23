@@ -4,9 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List Lowongan</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <a href="{{ route('lowongan.create') }}">Add lowongan</a>
+<div class="">
+    <header>
+        @if (Route::has('login'))
+            <nav style="display: flex; justify-content: flex-end; gap: 10px; padding: 10px;">
+                @auth
+                    <a
+                        href="{{ url('/dashboard') }}"
+                        style="background-color: #000000; color: #ffffff; border-radius: 8px; padding: 8px 20px; text-decoration: none; font-size: 14px; font-weight: 500; display: inline-block;"
+                    >
+                        Dashboard
+                    </a>
+                    @else
+                    <a
+                        href="{{ route('login') }}"
+                        style="background-color: #000000; color: #ffffff; border-radius: 8px; padding: 8px 20px; text-decoration: none; font-size: 14px; font-weight: 500; display: inline-block;"
+                    >
+                        Log in
+                    </a>
+
+                    @if (Route::has('register'))
+                        <a
+                            href="{{ route('register') }}"
+                            style="background-color: #000000; color: #ffffff; border-radius: 8px; padding: 8px 20px; text-decoration: none; font-size: 14px; font-weight: 500; display: inline-block;"
+                        >
+                            Register
+                        </a>
+                    @endif
+                @endauth
+            </nav>
+        @endif
+    </header>
+</div>
+
+    <a href="{{ route('lowongan.create') }}" style="text-decoration: underline;">Add lowongan</a>
 
     <table>
         <thead>
