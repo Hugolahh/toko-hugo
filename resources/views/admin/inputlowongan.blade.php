@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('lowongan.store') }}" method="POST">
     @csrf
     <div>

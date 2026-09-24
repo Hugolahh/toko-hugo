@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<div class="">
+<div>
     <header>
         @if (Route::has('login'))
             <nav style="display: flex; justify-content: flex-end; gap: 10px; padding: 10px;">
@@ -40,7 +40,12 @@
     </header>
 </div>
 
-    <a href="{{ route('lowongan.create') }}" style="text-decoration: underline;">Add lowongan</a>
+    <a href="{{ route('lowongan.create') }}">Add lowongan</a>
+
+    @if (session('success'))
+        <p>{{ session('success') }}</p>
+    @endif
+
 
     <table>
         <thead>
@@ -71,9 +76,11 @@
                         @method('DELETE')
                         <button type="submit" class="action-link" style="color:#d02455">Hapus</button>
                     </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </body>
 </html>
+

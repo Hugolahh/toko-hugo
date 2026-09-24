@@ -12,7 +12,7 @@ class LowonganController extends Controller
      */
     public function index()
     {
-        $lowongans = \App\Models\lowongan::all(); 
+        $lowongans = \App\Models\lowongan::all();
         return view('admin.listlowongan', compact('lowongans'));
     }
 
@@ -29,7 +29,7 @@ class LowonganController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'judul_lowongan' => 'required|string|min:5',
             'deskripsi' => 'required',
             'syarat' => 'required',
@@ -37,8 +37,8 @@ class LowonganController extends Controller
             'gaji' => 'required',
             'status' => 'required',
         ]);
-        
-        lowongan::create($request->all());
+
+            lowongan::create($validated);
         return redirect()->route('lowongan.index')->with('success', 'Lowongan berhasil ditambahkan.');
     }
 
