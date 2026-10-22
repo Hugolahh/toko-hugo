@@ -40,7 +40,7 @@
     </header>
 </div>
 
-    <a href="{{ route('lowongan.create') }}">Add lowongan</a>
+    <a href="{{ route('lowongan.create') }}" class="underline">Add lowongan</a>
 
     @if (session('success'))
         <p>{{ session('success') }}</p>
