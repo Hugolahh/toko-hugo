@@ -47,37 +47,37 @@
     @endif
 
 
-    <table style="width: 100%; text-align: center;">
+    <table style="width: 95%; text-align: center; border-collapse: collapse; margin: 0 auto;">
         <thead>
             <tr>
-                <th>Nomor</th>
-                <th>Posisi</th>
-                <th>Deskripsi</th>
-                <th>Syarat</th>
-                <th>Lokasi</th>
-                <th>Gaji</th>
-                <th>Status</th>
-                <th>Aksi</th>
+                <th style="border: 1px solid black;">Nomor</th>
+                <th style="border: 1px solid black;">Posisi</th>
+                <th style="border: 1px solid black;">Deskripsi</th>
+                <th style="border: 1px solid black;">Syarat</th>
+                <th style="border: 1px solid black;">Lokasi</th>
+                <th style="border: 1px solid black;">Gaji</th>
+                <th style="border: 1px solid black;">Status</th>
+                <th style="border: 1px solid black;">Aksi</th>
             </tr>
         </thead>
         <tbody>
             @foreach($lowongans as $lowongan)
             <tr>
-                <td>{{ $lowongan->id }}</td>
-                <td>{{ $lowongan->judul_lowongan }}</td>
-                <td>{{ $lowongan->deskripsi }}</td>
-                <td>{{ $lowongan->syarat }}</td>
-                <td>{{ $lowongan->lokasi }}</td>
-                <td>{{ $lowongan->gaji }}</td>
-                <td>{{ $lowongan->status }}</td>
-                <td>
-                    <a href="{{ route('lowongan.show', $lowongan->id) }}" class="underline">Detail</a>
-                    <a href="{{ route('lowongan.edit', $lowongan->id) }}" class="underline">Edit</a>
-                    <form action="{{ route('lowongan.destroy', $lowongan->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this lowongan?')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="action-link" style="color:#d02455">Hapus</button>
-                    </form>
+                <td style="border: 1px solid black;">{{ $lowongan->id }}</td>
+                <td style="border: 1px solid black;">{{ $lowongan->judul_lowongan }}</td>
+                <td style="border: 1px solid black;">{{ $lowongan->deskripsi }}</td>
+                <td style="border: 1px solid black;">{{ $lowongan->syarat }}</td>
+                <td style="border: 1px solid black;">{{ $lowongan->lokasi }}</td>
+                <td style="border: 1px solid black;">{{ $lowongan->gaji }}</td>
+                <td style="border: 1px solid black;">{{ $lowongan->status }}</td>
+                <td style="border: 1px solid black;">
+                <a href="{{ route('lowongan.show', $lowongan->id) }}" class="underline">Detail</a>
+                <a href="{{ route('lowongan.edit', $lowongan->id) }}" class="underline">Edit</a>
+                <form action="{{ route('lowongan.destroy', $lowongan->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this lowongan?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="action-link" style="color:#d02455">Hapus</button>
+                </form>
                 </td>
             </tr>
             @endforeach
