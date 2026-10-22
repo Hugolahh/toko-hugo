@@ -47,7 +47,7 @@
     @endif
 
 
-    <table>
+    <table style="width: 100%; text-align: center;">
         <thead>
             <tr>
                 <th>Nomor</th>
@@ -71,6 +71,8 @@
                 <td>{{ $lowongan->gaji }}</td>
                 <td>{{ $lowongan->status }}</td>
                 <td>
+                    <a href="{{ route('lowongan.show', $lowongan->id) }}" class="underline">Detail</a>
+                    <a href="{{ route('lowongan.edit', $lowongan->id) }}" class="underline">Edit</a>
                     <form action="{{ route('lowongan.destroy', $lowongan->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this lowongan?')">
                         @csrf
                         @method('DELETE')

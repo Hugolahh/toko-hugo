@@ -12,7 +12,7 @@ class LowonganController extends Controller
      */
     public function index()
     {
-        $lowongans = \App\Models\lowongan::all();
+        $lowongans = lowongan::all();
         return view('admin.listlowongan', compact('lowongans'));
     }
 
@@ -47,7 +47,8 @@ class LowonganController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $lowongan = lowongan::findOrFail($id);
+        return view('admin.detaillowongan', compact('lowongan'));
     }
 
     /**
@@ -55,7 +56,8 @@ class LowonganController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $lowongan = lowongan::findOrFail($id);
+        return view('admin.editlowongan', compact('lowongan'));
     }
 
     /**
@@ -63,7 +65,18 @@ class LowonganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'judul_lowongan' => 'required',
+            'deskripsi' => 'required',
+            'syarat' => 'required',
+            'lokasi' => 'required',
+            'gaji' => 'required',
+            'status' => 'required',
+        ]);
+
+        $lowongan = lowongan::findOrFail($id);
+        $lowongan->update($validated);
+        return redirect()->route('lowongan.index')->with('success', 'Lowongan berhasil diperbarui.');
     }
 
     /**
