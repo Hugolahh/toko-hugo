@@ -40,49 +40,50 @@
     </header>
 </div>
 
-    <a href="{{ route('lowongan.create') }}" class="underline">Add lowongan</a>
+    <div style="width: 95%; margin: 0 auto;">
+        @if (session('success'))
+            <p style="transform: translateY(-4px);">{{ session('success') }}</p>
+        @endif
 
-    @if (session('success'))
-        <p>{{ session('success') }}</p>
-    @endif
-
-
-    <table style="width: 95%; text-align: center; border-collapse: collapse; margin: 0 auto;">
-        <thead>
-            <tr>
-                <th style="border: 1px solid black;">Nomor</th>
-                <th style="border: 1px solid black;">Posisi</th>
-                <th style="border: 1px solid black;">Deskripsi</th>
-                <th style="border: 1px solid black;">Syarat</th>
-                <th style="border: 1px solid black;">Lokasi</th>
-                <th style="border: 1px solid black;">Gaji</th>
-                <th style="border: 1px solid black;">Status</th>
-                <th style="border: 1px solid black;">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($lowongans as $lowongan)
-            <tr>
-                <td style="border: 1px solid black;">{{ $lowongan->id }}</td>
-                <td style="border: 1px solid black;">{{ $lowongan->judul_lowongan }}</td>
-                <td style="border: 1px solid black;">{{ $lowongan->deskripsi }}</td>
-                <td style="border: 1px solid black;">{{ $lowongan->syarat }}</td>
-                <td style="border: 1px solid black;">{{ $lowongan->lokasi }}</td>
-                <td style="border: 1px solid black;">{{ $lowongan->gaji }}</td>
-                <td style="border: 1px solid black;">{{ $lowongan->status }}</td>
-                <td style="border: 1px solid black;">
-                <a href="{{ route('lowongan.show', $lowongan->id) }}" class="underline">Detail</a>
-                <a href="{{ route('lowongan.edit', $lowongan->id) }}" class="underline">Edit</a>
-                <form action="{{ route('lowongan.destroy', $lowongan->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this lowongan?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="action-link" style="color:#d02455">Hapus</button>
-                </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+        <div style="display: flex; justify-content: flex-start; margin: 0;">
+            <a href="{{ route('lowongan.create') }}" class="underline" style="display: inline-block; background-color: #000000; color: #ffffff; border-radius: 4px; padding: 5px 10px; text-decoration: none; transform: translateY(-4px);">Add lowongan</a>
+        </div>
+        <table style="width: 100%; text-align: center; border-collapse: collapse; margin: 0;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid black;">Nomor</th>
+                    <th style="border: 1px solid black;">Posisi</th>
+                    <th style="border: 1px solid black;">Deskripsi</th>
+                    <th style="border: 1px solid black;">Syarat</th>
+                    <th style="border: 1px solid black;">Lokasi</th>
+                    <th style="border: 1px solid black;">Gaji</th>
+                    <th style="border: 1px solid black;">Status</th>
+                    <th style="border: 1px solid black;">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($lowongans as $lowongan)
+                <tr>
+                    <td style="border: 1px solid black;">{{ $lowongan->id }}</td>
+                    <td style="border: 1px solid black;">{{ $lowongan->judul_lowongan }}</td>
+                    <td style="border: 1px solid black;">{{ $lowongan->deskripsi }}</td>
+                    <td style="border: 1px solid black;">{{ $lowongan->syarat }}</td>
+                    <td style="border: 1px solid black;">{{ $lowongan->lokasi }}</td>
+                    <td style="border: 1px solid black;">{{ $lowongan->gaji }}</td>
+                    <td style="border: 1px solid black;">{{ $lowongan->status }}</td>
+                    <td style="border: 1px solid black;">
+                    <a href="{{ route('lowongan.show', $lowongan->id) }}" class="underline">Detail</a>
+                    <a href="{{ route('lowongan.edit', $lowongan->id) }}" class="underline">Edit</a>
+                    <form action="{{ route('lowongan.destroy', $lowongan->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this lowongan?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="action-link" style="color:#d02455">Hapus</button>
+                    </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
-
