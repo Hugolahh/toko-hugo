@@ -47,6 +47,8 @@
 
         <div style="display: flex; justify-content: flex-start; margin: 0;">
             <a href="{{ route('lowongan.create') }}" class="underline" style="display: inline-block; background-color: #000000; color: #ffffff; border-radius: 4px; padding: 5px 10px; text-decoration: none; transform: translateY(-4px);">Add lowongan</a>
+            <a href="{{ route('lowongan.pdf') }}" class="underline" style="display: inline-block; background-color: #000000; color: #ffffff; border-radius: 4px; padding: 5px 10px; text-decoration: none; margin-left: 8px; transform: translateY(-4px);">Unduh PDF</a>
+            <a href="{{ route('lowongan.excel') }}" class="underline" style="display: inline-block; background-color: #000000; color: #ffffff; border-radius: 4px; padding: 5px 10px; text-decoration: none; margin-left: 8px; transform: translateY(-4px);">Unduh Excel</a>
         </div>
         <table style="width: 100%; text-align: center; border-collapse: collapse; margin: 0;">
             <thead>

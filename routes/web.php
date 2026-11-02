@@ -1,8 +1,18 @@
 <?php
 
+use App\Exports\LowonganExport;
 use App\Http\Controllers\LowonganController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
+
+Route::get('/lowongan/pdf', [PDFController::class, 'generatePDF'])
+    ->name('lowongan.pdf');
+
+Route::get('/lowongan/excel', function () {
+    return Excel::download(new LowonganExport, 'data-lowongan.xlsx');
+})->name('lowongan.excel');
 
 Route::resource('lowongan', LowonganController::class);
 
