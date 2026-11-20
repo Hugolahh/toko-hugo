@@ -10,31 +10,45 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 class LowonganExport implements FromCollection, WithHeadings, WithMapping
 {
-    private $no = 0;
+    private int $no = 0;
+
     public function collection(): Collection
     {
-        return lowongan::select('posisi', 'deskripsi', 'lokasi')->get();
-
+        return lowongan::query()
+            ->select('judul_lowongan', 'deskripsi', 'syarat', 'lokasi', 'gaji', 'status')
+            ->orderBy('id')
+            ->get();
     }
 
     public function headings(): array
     {
         return [
-            'No',
+            'Nomor',
             'Posisi',
             'Deskripsi',
-            'Lokasi'
+            'Syarat',
+            'Lokasi',
+            'Gaji',
+            'Status',
         ];
     }
 
-    public function map($lowongan): array
+    public function map(mixed $row): array
     {
+        if (! $row instanceof lowongan) {
+            throw new \UnexpectedValueException('Lowongan export rows must be lowongan models.');
+        }
+
         $this->no++;
+
         return [
             $this->no,
-            $lowongan->posisi,
-            $lowongan->deskripsi,
-            $lowongan->lokasi
+            $row->judul_lowongan,
+            $row->deskripsi,
+            $row->syarat,
+            $row->lokasi,
+            $row->gaji,
+            $row->status,
         ];
     }
 }

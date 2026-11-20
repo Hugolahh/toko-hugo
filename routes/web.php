@@ -7,10 +7,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 
-Route::get('/lowongan/pdf', [PDFController::class, 'generatePDF'])
+// PDF Export Route
+Route::get('pdflowongan', [PDFController::class, 'generatePDF'])
     ->name('lowongan.pdf');
 
-Route::get('/lowongan/excel', function () {
+// Excel Export Route
+Route::get('excellowongan', function () {
     return Excel::download(new LowonganExport, 'data-lowongan.xlsx');
 })->name('lowongan.excel');
 

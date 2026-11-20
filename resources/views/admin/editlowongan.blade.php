@@ -44,7 +44,10 @@
         </div>
         <div>
             <label for="status">Status:</label>
-            <input type="text" id="status" name="status" value="{{ old('status', $lowongan->status) }}" required>
+            <select id="status" name="status" required>
+                <option value="Buka" {{ old('status', $lowongan->status) === 'buka' ? 'selected' : '' }}>Buka</option>
+                <option value="Tutup" {{ old('status', $lowongan->status) === 'tutup' ? 'selected' : '' }}>Tutup</option>
+            </select>
         </div>
         <div>
             <button type="submit">Simpan Perubahan</button>
